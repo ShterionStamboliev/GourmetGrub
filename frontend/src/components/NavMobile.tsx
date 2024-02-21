@@ -3,12 +3,12 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from 
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
 
-export const NavMobile = () => {
+const NavMobile = () => {
 
     return (
         <Sheet>
             <SheetTrigger>
-                <Menu className="text-orange-400" />
+                <Menu className="text-orange-500" />
             </SheetTrigger>
             <SheetContent>
                 <SheetTitle>
@@ -16,9 +16,11 @@ export const NavMobile = () => {
                 </SheetTitle>
                 <Separator />
                 <SheetDescription className="flex py-2">
-                    <Button className="flex-1 font-bold bg-orange-400">Log In</Button>
+                    <Button className="flex-1 font-bold bg-orange-500 hover:bg-orange-600">Log In</Button>
                 </SheetDescription>
             </SheetContent>
         </Sheet>
     )
 }
+
+export default NavMobile;

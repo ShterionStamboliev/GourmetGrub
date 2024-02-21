@@ -9,8 +9,10 @@ const MainLayout = ({ children }: Props) => {
     
     return (
         <div className="flex flex-col min-h-screen">
+
             <Header />
             <HeroLayout />
+            
             <div className="container mx-auto flex-1 py-10">
                 {children}
             </div>
