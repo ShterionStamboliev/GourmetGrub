@@ -13,7 +13,7 @@ const MainLayout = ({ children }: Props) => {
             <Header />
             <HeroLayout />
             
-            <div className="container mx-auto flex-1 py-10">
+            <div className="flex-1 py-10">
                 {children}
             </div>
         </div>
