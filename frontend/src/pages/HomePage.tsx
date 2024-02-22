@@ -42,7 +42,7 @@ const HomePage = () => {
 
             </div>
 
-            <div className="flex justify-center gap-24 w-full flex-wrap pt-10 bg-gray-100">
+            <div className="flex justify-center w-full flex-wrap pt-10 bg-gray-100 md:gap-56">
 
                 <div className="flex flex-col justify-center">
                     <span className="font-bold text-4xl text-slate-900">Download our app</span>
@@ -62,8 +62,6 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-
-
 
                 <div>
                     <img className="pt-6" src={foodApp} />
