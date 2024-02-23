@@ -32,10 +32,10 @@ const Footer = () => {
                     </span>
 
                 </div>
-                <span className="text-white font-bold tracking-tight flex flex-col gap-2 pt-6">
-                    <span>Privacy Policy</span>
-                    <span>Terms of Service</span>
-                </span>
+                <div className="text-white font-bold tracking-tight flex flex-col gap-2 pt-6">
+                    <p>Privacy Policy</p>
+                    <p>Terms of Service</p>
+                </div>
             </div>
 
         </div>

@@ -17,15 +17,22 @@ const UserNavMenu = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem>
-                    <Link to="/my-profile" className="font-bold hover:text-orange-500">
-                        My Profile
+                    <Link to="/my-profile" className="font-bold flex flex-1">
+                        <Button className="bg-orange-500 hover:bg-orange-600 flex-1 font-bold">
+                            My Profile
+                        </Button>
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Link to="/my-orders" className="font-bold flex flex-1">
+                        <Button className="bg-orange-500 hover:bg-orange-600 flex-1 font-bold">
+                            My Orders
+                        </Button>
                     </Link>
                 </DropdownMenuItem>
                 <Separator />
                 <DropdownMenuItem>
-                    <Button
-                        onClick={() => logout()}
-                        className="flex flex-1 font-bold bg-orange-500">
+                    <Button onClick={() => logout()} className="flex flex-1 font-bold bg-slate-800 hover:bg-slate-900">
                         Log Out
                     </Button>
                 </DropdownMenuItem>
