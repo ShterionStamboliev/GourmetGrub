@@ -30,7 +30,6 @@ const Footer = () => {
                             <Twitter className="text-white" />
                         </Link>
                     </span>
-
                 </div>
                 <div className="text-white font-bold tracking-tight flex flex-col gap-2 pt-6">
                     <p>Privacy Policy</p>
