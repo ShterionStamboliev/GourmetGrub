@@ -12,8 +12,8 @@ const HeroLayout = () => {
                 </h2>
             </div>
 
-            <div className='flex-1 md:shrink-0'>
-                <img src={hero} className='bg-cover' />
+            <div className='flex-1'>
+                <img src={hero} className='bg-auto object-contain' />
             </div>
         </div>
     )

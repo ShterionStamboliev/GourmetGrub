@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroLayout from "@/components/HeroLayout";
 
@@ -13,9 +14,10 @@ const MainLayout = ({ children }: Props) => {
             <Header />
             <HeroLayout />
             
-            <div className="flex-1 py-10">
+            <div className="flex-1 pt-10">
                 {children}
             </div>
+            <Footer />
         </div>
     )
 };

@@ -22,7 +22,7 @@ const HomePage = () => {
 
             <div className="md:flex gap-16 flex-1 justify-center items-center flex-wrap">
 
-                <div className="flex flex-col items-center justify-center whitespace-nowrap pt-8">
+                <div className="flex flex-col items-center justify-center whitespace-nowrap md:pt-8">
                     <MapPin className="w-16 h-16 text-orange-600" />
                     <h3 className="font-bold text-lg text-slate-800">Tell us where you are.</h3>
                     <div className="text-center">We'll show you restaurants that you can order from.</div>
@@ -42,9 +42,9 @@ const HomePage = () => {
 
             </div>
 
-            <div className="flex justify-center w-full flex-wrap pt-10 bg-gray-100 md:gap-56">
+            <div className="flex justify-around w-full flex-wrap pt-10 bg-gray-100">
 
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center pb-10">
                     <span className="font-bold text-4xl text-slate-900">Download our app</span>
                     <span className="font-medium text-2xl text-slate-800 pt-6">Find a restaurant, order and eat!</span>
 
@@ -62,7 +62,7 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-
+                
                 <div>
                     <img className="pt-6" src={foodApp} />
                 </div>
