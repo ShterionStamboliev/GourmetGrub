@@ -13,6 +13,7 @@ const NavMain = () => {
         <span className='flex space-x-2 items-center'>
             {isAuthenticated ? (
                 <UserNavMenu />
+                // TODO: Fix user nav menu for mobile...
             ) : (
                 <Button
                     onClick={loginRedirect}
@@ -22,7 +23,6 @@ const NavMain = () => {
                 </Button>
             )}
         </span>
-
     )
 };
 
