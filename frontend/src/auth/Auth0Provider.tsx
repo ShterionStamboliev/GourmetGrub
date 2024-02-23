@@ -2,14 +2,14 @@ import { AppState, User, Auth0Provider } from "@auth0/auth0-react";
 
 type AuthProviderProps = {
     children: React.ReactNode
-}
+};
 
 const Auth0ProviderService = ({ children }: AuthProviderProps)  => {
     const domain = import.meta.env.VITE_AUTH0_DOMAIN;
     const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-    const redirectUrl = import.meta.env.VITE_AUTH0_CALLBACK;
+    const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
 
-    if (!domain || !clientId || !redirectUrl) {
+    if (!domain || !clientId || !redirectUri) {
         throw new Error("Auth initialization failed. Try again.");
     }
 
@@ -22,7 +22,7 @@ const Auth0ProviderService = ({ children }: AuthProviderProps)  => {
             domain={domain}
             clientId={clientId}
             authorizationParams={{
-                redirect_url: redirectUrl
+                redirect_uri: redirectUri
             }}
             onRedirectCallback={onRedirectCallback}
         >
