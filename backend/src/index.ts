@@ -13,6 +13,6 @@ app.use(cors());
 
 app.use("/api/my/user", userRoute);
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log('Server running.')
 });
