@@ -1,20 +1,24 @@
+import { useCreateUser } from "@/api/UserApi";
 import { AppState, User, Auth0Provider } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 type AuthProviderProps = {
     children: React.ReactNode
 };
 
-const Auth0ProviderService = ({ children }: AuthProviderProps)  => {
+const Auth0ProviderService = ({ children }: AuthProviderProps) => {
     const domain = import.meta.env.VITE_AUTH0_DOMAIN;
     const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
     const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
+
+    const navigate = useNavigate();
 
     if (!domain || !clientId || !redirectUri) {
         throw new Error("Auth initialization failed. Try again.");
     }
 
     const onRedirectCallback = (appState?: AppState, user?: User) => {
-        
+        navigate("/auth-callback");
     };
 
     return (
