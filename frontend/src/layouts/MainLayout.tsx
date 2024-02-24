@@ -2,18 +2,19 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroLayout from "@/components/HeroLayout";
 
-type Props = {
-    children: React.ReactNode
+type MainLayoutProps = {
+    children: React.ReactNode;
+    showHero?: boolean;
 };
 
-const MainLayout = ({ children }: Props) => {
-    
+const MainLayout = ({ children, showHero = false }: MainLayoutProps) => {
+
     return (
         <div className="flex flex-col min-h-screen">
 
             <Header />
-            <HeroLayout />
-            
+            {showHero && <HeroLayout />}
+
             <div className="flex-1 pt-10">
                 {children}
             </div>

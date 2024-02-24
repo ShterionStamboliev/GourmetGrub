@@ -29,7 +29,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSave)} className='space-y-4 bg-gray-50 rounded-lg md:p-10'>
+            <form onSubmit={form.handleSubmit(onSave)} className='space-y-4 m-10 p-10 bg-gray-100 rounded-lg md:p-10'>
                 <div>
                     <h2 className='text-2xl font-bold'>User profile form</h2>
                     <FormDescription>
@@ -45,12 +45,11 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                     </FormItem>
                 )}
                 />
-
                 <FormField control={form.control} name='name' render={({ field }) => (
                     <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                            <Input {...field} disabled className='bg-white' />
+                            <Input {...field} className='bg-white' />
                         </FormControl>
                     </FormItem>
                 )}
@@ -58,28 +57,28 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
 
                 <div className='flex flex-col md:flex-row gap-4'>
                     <FormField control={form.control} name='address' render={({ field }) => (
-                        <FormItem>
+                        <FormItem className='flex-1'>
                             <FormLabel>Address</FormLabel>
                             <FormControl>
-                                <Input {...field} disabled className='bg-white' />
+                                <Input {...field} className='bg-white' />
                             </FormControl>
                         </FormItem>
                     )}
                     />
                     <FormField control={form.control} name='country' render={({ field }) => (
-                        <FormItem>
+                        <FormItem className='flex-1'>
                             <FormLabel>Country</FormLabel>
                             <FormControl>
-                                <Input {...field} disabled className='bg-white' />
+                                <Input {...field} className='bg-white' />
                             </FormControl>
                         </FormItem>
                     )}
                     />
                     <FormField control={form.control} name='city' render={({ field }) => (
-                        <FormItem>
+                        <FormItem className='flex-1'>
                             <FormLabel>City</FormLabel>
                             <FormControl>
-                                <Input {...field} disabled className='bg-white' />
+                                <Input {...field} className='bg-white' />
                             </FormControl>
                         </FormItem>
                     )}
