@@ -1,6 +1,6 @@
 import LoadingButton from '@/components/LoadingButton';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -29,7 +29,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSave)} className='space-y-4 m-10 p-10 bg-gray-100 rounded-lg md:p-10'>
+            <form onSubmit={form.handleSubmit(onSave)} className='space-y-4 ml-10 mr-10 mb-10 p-10 bg-gray-100 rounded-lg md:p-10'>
                 <div>
                     <h2 className='text-2xl font-bold'>User profile form</h2>
                     <FormDescription>
@@ -51,6 +51,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                         <FormControl>
                             <Input {...field} className='bg-white' />
                         </FormControl>
+                        <FormMessage />
                     </FormItem>
                 )}
                 />
@@ -62,6 +63,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                             <FormControl>
                                 <Input {...field} className='bg-white' />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                     />
@@ -71,6 +73,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                             <FormControl>
                                 <Input {...field} className='bg-white' />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                     />
@@ -80,6 +83,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                             <FormControl>
                                 <Input {...field} className='bg-white' />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                     />
@@ -87,7 +91,7 @@ const UserProfileForm = ({ onSave, isLoading }: UserFormProps) => {
                 {isLoading ? (
                     <LoadingButton />
                 ) : (
-                    <Button type='submit' className='bg-orange-500'>
+                    <Button className='bg-orange-500'>
                         Submit
                     </Button>
                 )}
