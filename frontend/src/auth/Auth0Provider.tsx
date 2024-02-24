@@ -9,10 +9,11 @@ const Auth0ProviderService = ({ children }: AuthProviderProps) => {
     const domain = import.meta.env.VITE_AUTH0_DOMAIN;
     const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
     const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
+    const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 
     const navigate = useNavigate();
 
-    if (!domain || !clientId || !redirectUri) {
+    if (!domain || !clientId || !redirectUri || !audience) {
         throw new Error("Auth initialization failed. Try again.");
     }
 
@@ -25,7 +26,8 @@ const Auth0ProviderService = ({ children }: AuthProviderProps) => {
             domain={domain}
             clientId={clientId}
             authorizationParams={{
-                redirect_uri: redirectUri
+                redirect_uri: redirectUri,
+                audience
             }}
             onRedirectCallback={onRedirectCallback}
         >

@@ -1,9 +1,10 @@
 import express from "express";
 import userController from "../controllers/userController";
-import { jwtCheck } from "../middleware/auth";
+import { jwtCheck, jwtParse } from "../middleware/auth";
 
 const router = express.Router();
 
 router.post("/", jwtCheck, userController.createUser);
+router.put("/", jwtCheck, jwtParse, userController.updateUser);
 
 export default router;
