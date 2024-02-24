@@ -10,8 +10,7 @@ type CreateUserProps = {
 
 export const useCreateUser = () => {
     const { getAccessTokenSilently } = useAuth0();
-
-
+    
     const createUserRequest = async (user: CreateUserProps) => {
         const accessToken: string = await getAccessTokenSilently();
         const response = await fetch(`${API_URL}/api/my/user`, {
