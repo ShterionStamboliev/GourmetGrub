@@ -1,8 +1,42 @@
+import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+export const useGetUser = () => {
+    const { getAccessTokenSilently } = useAuth0();
+
+    const getUserRequest = async (): Promise<User> => {
+        const accessToken: string = await getAccessTokenSilently();
+
+        const response = await fetch(`${API_URL}/api/my/user`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json"
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch user")
+        }
+
+        return response.json();
+    }
+
+    const { data: currentUser, isLoading, error } = useQuery("fetchCurrentUser", getUserRequest);
+
+    if (error) {
+        toast.error(error.toString());
+    }
+
+    return {
+        currentUser,
+        isLoading
+    }
+}
 
 type CreateUserProps = {
     auth0Id: string;
@@ -14,6 +48,7 @@ export const useCreateUser = () => {
 
     const createUserRequest = async (user: CreateUserProps) => {
         const accessToken: string = await getAccessTokenSilently();
+
         const response = await fetch(`${API_URL}/api/my/user`, {
             method: "POST",
             headers: {
@@ -26,6 +61,8 @@ export const useCreateUser = () => {
         if (!response.ok) {
             throw new Error("Failed to create new user");
         }
+
+        return response.json();
     };
 
     const { mutateAsync: createUser, isLoading, isError, isSuccess } = useMutation(createUserRequest);
@@ -49,7 +86,7 @@ export const useUpdateUser = () => {
     const { getAccessTokenSilently } = useAuth0();
 
     const updateUserProfile = async (formData: UpdateUserFormData) => {
-        const accessToken = await getAccessTokenSilently();
+        const accessToken: string = await getAccessTokenSilently();
 
         const response = await fetch(`${API_URL}/api/my/user`, {
             method: "PUT",

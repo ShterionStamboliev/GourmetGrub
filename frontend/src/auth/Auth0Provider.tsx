@@ -30,6 +30,7 @@ const Auth0ProviderService = ({ children }: AuthProviderProps) => {
                 audience
             }}
             onRedirectCallback={onRedirectCallback}
+            cacheLocation="localstorage"
         >
             {children}
         </Auth0Provider>
