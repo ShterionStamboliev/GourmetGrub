@@ -50,7 +50,7 @@ const RestaurantForm = () => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 bg-gray-100 p-10 rounded-lg"
+                className="space-y-4 ml-10 mr-10 mb-10 p-10 bg-gray-100 rounded-lg md:p-10"
             >
                 <RestaurantDetailsSection />
             </form>

@@ -58,7 +58,7 @@ const RestaurantDetailsSection = () => {
                 control={control}
                 name="deliveryPrice"
                 render={({ field }) => (
-                    <FormItem className="max-w-[25%]">
+                    <FormItem className="flex-1">
                         <FormLabel>Delivery price ($)</FormLabel>
                         <FormControl>
                             <Input {...field} className="bg-white" placeholder="1.00" />
@@ -71,7 +71,7 @@ const RestaurantDetailsSection = () => {
                 control={control}
                 name="deliveryTime"
                 render={({ field }) => (
-                    <FormItem className="max-w-[25%]">
+                    <FormItem className="flex-1">
                         <FormLabel>Delivery time (minutes)</FormLabel>
                         <FormControl>
                             <Input {...field} className="bg-white" placeholder="~20" />

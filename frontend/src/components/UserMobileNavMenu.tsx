@@ -2,13 +2,13 @@ import { CircleUserRound } from "lucide-react"
 import { useAuth0 } from "@auth0/auth0-react"
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
-import { SheetDescription, SheetTitle } from "./ui/sheet"
+import { SheetTitle } from "./ui/sheet"
 
 const UserMobileNavMenu = () => {
     const { user, logout } = useAuth0();
 
     return (
-        <SheetDescription className="flex flex-col">
+        <>
             <div className="flex py-4">
                 <CircleUserRound className="text-orange-500" />
                 <SheetTitle className="pl-2">
@@ -17,6 +17,12 @@ const UserMobileNavMenu = () => {
             </div>
 
             <div className="flex flex-col flex-1 justify-center space-y-4">
+                <Link to="/my-restaurant" className="font-bold flex flex-1">
+                    <Button className="flex-1 font-bold bg-orange-500 hover:bg-orange-600 text-center">
+                        My Restaurant
+                    </Button>
+                </Link>
+
                 <Link to="/my-profile" className="font-bold flex flex-1">
                     <Button className="flex-1 font-bold bg-orange-500 hover:bg-orange-600 text-center">
                         My Profile
@@ -35,7 +41,7 @@ const UserMobileNavMenu = () => {
                     Log Out
                 </Button>
             </div>
-        </SheetDescription>
+        </>
     )
 }
 
