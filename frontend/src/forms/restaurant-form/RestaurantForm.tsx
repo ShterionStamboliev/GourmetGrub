@@ -3,6 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import RestaurantDetailsSection from "./RestaurantDetailsSection";
+import { Separator } from "@/components/ui/separator";
+import RestaurantCuisinesSection from "./RestaurantCuisinesSection";
+import RestaurantMenuSection from "./RestaurantMenuSection";
+import RestaurantImageSection from "./RestaurantImageSection";
+import LoadingButton from "@/components/LoadingButton";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
     restaurantName: z.string().min(1, "Restaurant name is required"),
@@ -29,9 +35,7 @@ type RestaurantFormProps = {
     isLoading: boolean;
 };
 
-
-
-const RestaurantForm = () => {
+const RestaurantForm = ({ onSave, isLoading }: RestaurantFormProps) => {
     const form = useForm<RestaurantFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -53,6 +57,17 @@ const RestaurantForm = () => {
                 className="space-y-4 ml-10 mr-10 mb-10 p-10 bg-gray-100 rounded-lg md:p-10"
             >
                 <RestaurantDetailsSection />
+                <Separator />
+                <RestaurantCuisinesSection />
+                <Separator />
+                <RestaurantMenuSection />
+                <Separator />
+                <RestaurantImageSection />
+                {isLoading ?
+                    <LoadingButton /> :
+                    <Button type="submit">
+                        Submit
+                    </Button>}
             </form>
         </Form>
     )
