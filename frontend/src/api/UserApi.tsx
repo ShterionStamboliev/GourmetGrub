@@ -35,7 +35,7 @@ export const useGetUser = () => {
     return {
         currentUser,
         isLoading
-    }
+    };
 }
 
 type CreateUserProps = {
@@ -121,5 +121,5 @@ export const useUpdateUser = () => {
         isSuccess,
         error,
         reset
-    }
+    };
 };

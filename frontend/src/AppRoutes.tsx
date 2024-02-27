@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/HomePage"
 import AuthCallbackPage from "./pages/AuthCallbackPage"
 import UserProfilePage from "./pages/UserProfilePage"
+import GuardRoute from "./auth/GuardRoute"
 
 function AppRoutes() {
     return (
@@ -21,14 +22,17 @@ function AppRoutes() {
                     <AuthCallbackPage />
                 }
             />
-            <Route
-                path="/my-profile"
-                element={
-                    <MainLayout>
-                        <UserProfilePage />
-                    </MainLayout>
-                }
-            />
+            <Route element={<GuardRoute />}>
+                <Route
+                    path="/my-profile"
+                    element={
+                        <MainLayout>
+                            <UserProfilePage />
+                        </MainLayout>
+                    }
+                />
+            </Route>
+
             <Route
                 path="*"
                 element={
