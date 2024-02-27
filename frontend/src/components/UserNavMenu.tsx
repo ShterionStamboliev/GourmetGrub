@@ -16,6 +16,13 @@ const UserNavMenu = () => {
                 {user?.email}
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+            <DropdownMenuItem>
+                    <Link to="/my-restaurant" className="font-bold flex flex-1">
+                        <Button className="bg-orange-500 hover:bg-orange-600 flex-1 font-bold">
+                            My Restaurant
+                        </Button>
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Link to="/my-profile" className="font-bold flex flex-1">
                         <Button className="bg-orange-500 hover:bg-orange-600 flex-1 font-bold">
