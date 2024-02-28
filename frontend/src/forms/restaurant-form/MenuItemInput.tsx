@@ -11,7 +11,6 @@ type MenuItemProps = {
 const MenuItemInput = ({ index, removeMenuItem }: MenuItemProps) => {
     const { control } = useFormContext();
 
-
     return (
         <div className='flex flex-row items-end gap-2'>
             <FormField control={control} name={`menuItems.${index}.name`} render={({ field }) =>

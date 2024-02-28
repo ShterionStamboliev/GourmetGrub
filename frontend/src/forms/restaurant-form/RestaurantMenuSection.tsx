@@ -23,6 +23,7 @@ const RestaurantMenuSection = () => {
                 <FormItem className="flex flex-col gap-2">
                     {fields.map((_, index) => (
                         <MenuItemInput
+                            key={index}
                             index={index}
                             removeMenuItem={() => remove(index)}
                         />

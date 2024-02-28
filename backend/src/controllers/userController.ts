@@ -17,7 +17,7 @@ const getUser = async (req: Request, res: Response) => {
             message: "Something went wrong"
         });
     }
-}
+};
 
 const createUser = async (req: Request, res: Response) => {
 

@@ -42,11 +42,9 @@ export const validateRestaurantRequest = [
         .notEmpty()
         .withMessage("Country is required"),
     body("deliveryPrice")
-        .notEmpty()
         .isFloat({ min: 0 })
         .withMessage("Price cannot be of a negative value"),
     body("deliveryTime")
-        .notEmpty()
         .isInt({ min: 0 })
         .withMessage("Delivery time cannot be of a negative value"),
     body("cuisines")

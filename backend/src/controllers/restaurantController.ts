@@ -3,6 +3,26 @@ import Restaurant from '../models/restaurantModel';
 import cloudinary from 'cloudinary'
 import mongoose from 'mongoose';
 
+const getRestaurant = async (req: Request, res: Response) => {
+    try {
+        const findRestaurant = await Restaurant.findOne({
+            user: req.userId
+        });
+
+        if (!findRestaurant) {
+            return res.status(404).json({
+                message: "Could not find restaurant"
+            });
+        }
+        res.json(findRestaurant);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Something went wrong"
+        });
+    }
+}
+
 const createRestaurant = async (req: Request, res: Response) => {
     try {
         const isRestaurantExisting = await Restaurant.findOne({
@@ -16,8 +36,8 @@ const createRestaurant = async (req: Request, res: Response) => {
         }
 
         const image = req.file as Express.Multer.File;
-        const baseImage = Buffer.from(image.buffer).toString('base64'); // Encoding the image to base64 format
-        const dataUri = `data:${image.mimetype};base64,${baseImage}`; // Creating base64 image so that we can upload it to the Cloudinary base
+        const baseImage = Buffer.from(image.buffer).toString('base64');
+        const dataUri = `data:${image.mimetype};base64,${baseImage}`;
         const upload = await cloudinary.v2.uploader.upload(dataUri);
 
         const restaurant = new Restaurant(req.body);
@@ -26,7 +46,7 @@ const createRestaurant = async (req: Request, res: Response) => {
         restaurant.lastUpdated = new Date();
         await restaurant.save();
 
-        res.status(201).send(restaurant)
+        res.status(201).send(restaurant);
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -36,5 +56,6 @@ const createRestaurant = async (req: Request, res: Response) => {
 }
 
 export default {
+    getRestaurant,
     createRestaurant
 }
