@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import User from "../models/userModel";
 
 const getUser = async (req: Request, res: Response) => {
-
     try {
         const getCurrentUser = await User.findOne({ _id: req.userId });
         if (!getCurrentUser) {
@@ -20,7 +19,6 @@ const getUser = async (req: Request, res: Response) => {
 };
 
 const createUser = async (req: Request, res: Response) => {
-
     try {
         const { auth0Id } = req.body;
         const isUserExisting = await User.findOne({ auth0Id });
@@ -42,7 +40,6 @@ const createUser = async (req: Request, res: Response) => {
 };
 
 const updateUser = async (req: Request, res: Response) => {
-
     try {
         const { name, address, country, city } = req.body;
         const user = await User.findById(req.userId);
