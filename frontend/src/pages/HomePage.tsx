@@ -4,20 +4,29 @@ import { ConciergeBell } from "lucide-react"
 import foodApp from "../assets/FoodApp.png"
 import appStore from "../assets/AppStore.png"
 import googleApp from "../assets/GoogleApp.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import SearchBar, { SearchForm } from "@/components/SearchBar"
 
 const HomePage = () => {
+    const navigate = useNavigate();
+
+    const handleSearch = (searchFormValue: SearchForm) => {
+        navigate({
+            pathname: `/search/${searchFormValue.searchQuery}`
+        })
+    };
 
     return (
         <div className="flex flex-col gap-10 space-y-6">
 
-            <div className="flex flex-col gap-2 text-center -mt-16 bg-white rounded-lg py-6 shadow-lg shadow-slate-500/50 ml-16 mr-16">
+            <div className="flex flex-col md:px-32 gap-2 text-center -mt-16 bg-white rounded-lg py-6 shadow-lg shadow-slate-500/50 ml-16 mr-16">
                 <h2 className="text-2xl tracking-tight text-black-100">
                     How to order?
                 </h2>
                 <span className="text-4xl font-bold tracking-tight text-orange-600 ">
                     It's so simple.
                 </span>
+                <SearchBar placeholder="Search for a restaurant or cuisine" onSubmit={handleSearch} />
             </div>
 
             <div className="md:flex gap-16 flex-1 justify-center items-center flex-wrap">
@@ -62,7 +71,7 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <img className="pt-6" src={foodApp} />
                 </div>

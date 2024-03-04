@@ -20,7 +20,6 @@ const AuthCallbackPage = () => {
         };
         navigate("/");
     }, [createUser, navigate, user]);
-
 };
 
 export default AuthCallbackPage;

@@ -5,24 +5,23 @@ import AuthCallbackPage from "./pages/AuthCallbackPage"
 import UserProfilePage from "./pages/UserProfilePage"
 import GuardRoute from "./auth/GuardRoute"
 import { RestaurantPage } from "./pages/RestaurantPage"
+import SearchPage from "./pages/SearchPage"
 
 function AppRoutes() {
     return (
         <Routes>
-            <Route
-                path="/"
-                element={
-                    <MainLayout showHero>
-                        <HomePage />
-                    </MainLayout>
-                }
-            />
-            <Route
-                path="/auth-callback"
-                element={
-                    <AuthCallbackPage />
-                }
-            />
+            <Route path="/" element={
+                <MainLayout showHero>
+                    <HomePage />
+                </MainLayout>
+            } />
+            <Route path="/auth-callback" element={<AuthCallbackPage />} />
+            <Route path="/search/:city" element={
+                <MainLayout showHero={false}>
+                    <SearchPage />
+                </MainLayout>
+            } />
+
             <Route element={<GuardRoute />}>
                 <Route
                     path="/my-profile"
@@ -30,16 +29,8 @@ function AppRoutes() {
                         <MainLayout>
                             <UserProfilePage />
                         </MainLayout>
-                    }
-                />
-                <Route
-                    path="/my-restaurant"
-                    element={
-                        <MainLayout>
-                            <RestaurantPage />
-                        </MainLayout>
-                    }
-                />
+                    } />
+                <Route path="/my-restaurant" element={<MainLayout> <RestaurantPage /> </MainLayout>} />
             </Route>
 
             <Route
