@@ -35,3 +35,4 @@ export type SearchResults = {
         pages: number;
     }
 }
+
