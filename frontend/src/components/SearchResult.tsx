@@ -11,8 +11,8 @@ const SearchResult = ({ city, total }: SearchResultProps) => {
         <div className="text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row">
             <span>
                 {total} Restaurants found in {city}
-                <Link className="text-sm font-semibold underline cursor-pointer text-blue-500" to='/'>
-                    Change search location
+                <Link to='/' className="text-sm ml-2 font-semibold underline cursor-pointer text-blue-500">
+                    Change search location for city
                 </Link>
             </span>
             insert dropdown menu here

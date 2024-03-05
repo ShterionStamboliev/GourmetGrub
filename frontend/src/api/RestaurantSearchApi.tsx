@@ -13,17 +13,16 @@ export const useSearchRestaurant = (searchState: SearchState, city?: string) => 
         const response = await fetch(`${API_URL}/api/restaurant/search/${city}?${params.toString()}`);
 
         if (!response.ok) {
-            throw new Error("Failed to fetch restaurant")
+            throw new Error("Failed to fetch restaurant");
         }
 
         return response.json();
     };
 
-    const { data: result, isLoading } = useQuery(["searchRestaurant", searchState], createSearchRequest, { enabled: !!city });
+    const { data: result, isLoading } = useQuery(["searchRestaurants", searchState], createSearchRequest, { enabled: !!city });
 
     return {
         result,
         isLoading,
-        searchState
     }
 }

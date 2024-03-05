@@ -5,7 +5,6 @@ import SearchResultCard from "@/components/SearchResultCard";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 export type SearchState = {
     searchQuery: string;
 }
@@ -41,7 +40,7 @@ const SearchPage = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 pb-10 mx-10">
             <div id="cuisine-list">
                 cuisines
             </div>
