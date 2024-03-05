@@ -31,7 +31,7 @@ export type SearchResults = {
     data: Restaurant[];
     pagination: {
         totalRestaurants: number;
-        getPage: number;
+        page: number;
         pages: number;
     }
 }
