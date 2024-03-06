@@ -47,7 +47,7 @@ const SearchBar = ({ onSubmit, onReset, placeholder, searchQuery }: SearchBarPro
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                className='flex items-center flex-1 gap-3 justify-between flex-row border-2 rounded-full p-3'
+                className='flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3'
             >
                 <Search className="hidden md:block text-orange-500" />
                 <FormField control={form.control} name='searchQuery' render={({ field }) => (

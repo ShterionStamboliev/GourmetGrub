@@ -8,7 +8,7 @@ type PaginationProps = {
 
 const PagePagination = ({ onPageChange, page, pages }: PaginationProps) => {
     const pageNumbers: number[] = [];
-    
+
     for (let i = 1; i <= pages; i++) {
         pageNumbers.push(i);
     }
@@ -28,6 +28,7 @@ const PagePagination = ({ onPageChange, page, pages }: PaginationProps) => {
                             href="#"
                             onClick={() => onPageChange(number)}
                             isActive={page === number}
+
                         >
                             {number}
                         </PaginationLink>

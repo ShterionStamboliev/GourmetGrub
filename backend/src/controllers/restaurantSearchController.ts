@@ -1,14 +1,33 @@
 import { Request, Response } from "express";
 import Restaurant from "../models/restaurantModel";
 
+const getRestaurant = async (req: Request, res: Response) => {
+    try {
+        const restaurantId = req.params.restaurantId;
+
+        const restaurant = await Restaurant.findById(restaurantId);
+        if (!restaurant) {
+            return res.status(404).json({
+                message: "Restaurant not found"
+            });
+        }
+        res.json();
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Something went wrong"
+        })
+    }
+}
+
 const searchRestaurant = async (req: Request, res: Response) => {
     try {
         const city = req.params.city;
 
-        const searchQuery = req.query.searchQuery as string || '';
-        const selectedCuisines = req.query.selectedCuisines as string || '';
-        const sortOption = req.query.sortOption as string || 'lastUpdated';
-        const getPage = parseInt(req.query.page as string) || 1;
+        const searchQuery = (req.query.searchQuery as string) || '';
+        const selectedCuisines = (req.query.selectedCuisines as string) || '';
+        const sortOption = (req.query.sortOption as string) || 'lastUpdated';
+        const page = parseInt(req.query.page as string) || 1;
 
         let query: any = {
 
@@ -21,7 +40,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
             return res.status(404).json({
                 data: [],
                 pagination: {
-                    total: 0,
+                    totalRestaurants: 0,
                     page: 1,
                     pages: 1
                 }
@@ -29,11 +48,12 @@ const searchRestaurant = async (req: Request, res: Response) => {
         }
 
         if (selectedCuisines) {
-            const cuisinesArray = selectedCuisines.split(',').map((cuisine) => {
-                new RegExp(cuisine, 'i');
+            const cuisinesArray = selectedCuisines
+                .split(',')
+                .map((cuisine) =>
+                    new RegExp(cuisine, 'i'));
 
-                query['cuisines'] = { $all: cuisinesArray };
-            })
+            query['cuisines'] = { $all: cuisinesArray };
         }
 
         if (searchQuery) {
@@ -47,7 +67,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
         }
 
         const displayPages = 10;
-        const skipPage = (getPage - 1) * displayPages;
+        const skipPage = (page - 1) * displayPages;
 
         const restaurants = await Restaurant.find(query).sort({ [sortOption]: 1 }).skip(skipPage).limit(displayPages).lean();
 
@@ -57,7 +77,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
             data: restaurants,
             pagination: {
                 totalRestaurants,
-                getPage,
+                page,
                 pages: Math.ceil(totalRestaurants / displayPages)
             }
         }
@@ -73,5 +93,6 @@ const searchRestaurant = async (req: Request, res: Response) => {
 };
 
 export default {
+    getRestaurant,
     searchRestaurant
 }
