@@ -3,7 +3,6 @@ import { Label } from "./ui/label";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { ChangeEvent } from "react";
 import { Button } from "./ui/button";
-import { spawn } from "child_process";
 
 type CuisinesFilterProps = {
     onChange: (cuisines: string[]) => void;
@@ -39,9 +38,9 @@ const CuisinesFilter = ({ isExpanded, onChange, selectedCuisines, onExpanded }: 
             <div className="space-y-2 flex flex-col">
                 {restaurantOptionsList
                     .slice(0, isExpanded ? restaurantOptionsList.length : 7)
-                    .map((cuisine) => {
+                    .map((cuisine, index) => {
                         const isSelected = selectedCuisines.includes(cuisine);
-                        return <div className="flex">
+                        return <div className="flex" key={index}>
                             <input id={`cuisine_${cuisine}`}
                                 type="checkbox"
                                 className="hidden"
