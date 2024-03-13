@@ -15,7 +15,7 @@ const SearchResult = ({ city, total }: SearchResultProps) => {
                     Change search location for city
                 </Link>
             </span>
-            insert dropdown menu here
+            
         </div>
     )
 }
