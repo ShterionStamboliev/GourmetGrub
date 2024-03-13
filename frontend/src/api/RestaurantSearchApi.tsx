@@ -1,8 +1,26 @@
 import { SearchState } from "@/pages/SearchPage";
-import { SearchResults } from "@/types";
+import { Restaurant, SearchResults } from "@/types";
 import { useQuery } from "react-query";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+export const useGetRestaurantId = (restaurantId?: string) => {
+    const getRestaurantId = async (): Promise<Restaurant> => {
+        const response = await fetch(`${API_URL}/api/restaurant/${restaurantId}`)
+        if (!response.ok) {
+            throw new Error('Failed to fetch restaurant data');
+        }
+
+        return response.json();
+    };
+
+    const { data: restaurant, isLoading } = useQuery('fetchRestaurant', getRestaurantId);
+
+    return {
+        restaurant,
+        isLoading
+    }
+}
 
 export const useSearchRestaurant = (searchState: SearchState, city?: string) => {
 
