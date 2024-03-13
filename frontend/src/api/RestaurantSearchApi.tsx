@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const useGetRestaurantId = (restaurantId?: string) => {
+
     const getRestaurantId = async (): Promise<Restaurant> => {
         const response = await fetch(`${API_URL}/api/restaurant/${restaurantId}`)
         if (!response.ok) {
@@ -14,7 +15,9 @@ export const useGetRestaurantId = (restaurantId?: string) => {
         return response.json();
     };
 
-    const { data: restaurant, isLoading } = useQuery('fetchRestaurant', getRestaurantId);
+    const { data: restaurant, isLoading } = useQuery('fetchRestaurant', getRestaurantId, {
+        enabled: !!restaurantId
+    });
 
     return {
         restaurant,

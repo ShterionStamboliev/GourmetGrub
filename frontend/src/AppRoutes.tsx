@@ -6,6 +6,7 @@ import UserProfilePage from "./pages/UserProfilePage"
 import GuardRoute from "./auth/GuardRoute"
 import { RestaurantPage } from "./pages/RestaurantPage"
 import SearchPage from "./pages/SearchPage"
+import DetailsPage from "./pages/RestaurantDetailsPage"
 
 function AppRoutes() {
     return (
@@ -19,6 +20,12 @@ function AppRoutes() {
             <Route path="/search/:city" element={
                 <MainLayout showHero={false}>
                     <SearchPage />
+                </MainLayout>
+            } />
+
+            <Route path="/details/:restaurantId" element={
+                <MainLayout showHero={false}>
+                    <DetailsPage />
                 </MainLayout>
             } />
 

@@ -11,7 +11,7 @@ const getRestaurant = async (req: Request, res: Response) => {
                 message: "Restaurant not found"
             });
         }
-        res.json();
+        res.json(restaurant);
     } catch (error) {
         console.log(error);
         res.status(500).json({
