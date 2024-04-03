@@ -4,6 +4,7 @@ import RestaurantMenuItem from "@/components/RestaurantMenuItem";
 import UserOrder from "@/components/UserOrder";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
+import { MenuItem } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -19,6 +20,30 @@ const DetailsPage = () => {
     const { restaurant, isLoading } = useGetRestaurantId(restaurantId);
 
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+    const addToCart = (menuItem: MenuItem) => {
+        setCartItems((prevItems) => {
+            const existingItem = prevItems.find((cartItem) => cartItem._id === menuItem._id);
+
+            let updateCartItems;
+
+            if (existingItem) {
+                updateCartItems = prevItems.map((cartItem) => cartItem._id === menuItem._id
+                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                    : cartItem)
+            } else {
+                updateCartItems = [
+                    ...prevItems, {
+                        _id: menuItem._id,
+                        name: menuItem.name,
+                        price: menuItem.price,
+                        quantity: 1,
+                    }
+                ];
+            };
+            return updateCartItems;
+        });
+    };
 
     if (isLoading || !restaurant) {
         return 'Loading...';
@@ -36,10 +61,11 @@ const DetailsPage = () => {
                     <span className="text-2xl font-bold tracking-tight">
                         Menu
                     </span>
-                    {restaurant.menuItems.map((menuItem, index) => (
+                    {restaurant.menuItems.map((menuItem) => (
                         <RestaurantMenuItem
                             menuItem={menuItem}
-                            key={index}
+                            key={menuItem._id}
+                            addToCart={() => addToCart(menuItem)}
                         />
                     ))}
                 </div>
