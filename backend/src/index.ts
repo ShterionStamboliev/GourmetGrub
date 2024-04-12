@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
@@ -19,6 +19,12 @@ cloudinary.config({
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.get("/health", async (req: Request, res: Response) => {
+    res.send({
+        message: "Health OK!"
+    })
+})
 
 app.use("/api/my/user", userRoute);
 app.use("/api/my/restaurant", restaurantRoute);
