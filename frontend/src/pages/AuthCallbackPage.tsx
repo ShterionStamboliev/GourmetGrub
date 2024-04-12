@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthCallbackPage = () => {
+    const navigate = useNavigate();
     const { user } = useAuth0();
     const { createUser } = useCreateUser();
-    const navigate = useNavigate();
 
     const isUserCreated = useRef<boolean>(false);
 
@@ -20,6 +20,8 @@ const AuthCallbackPage = () => {
         };
         navigate("/");
     }, [createUser, navigate, user]);
+
+    return <>Loading...</>;
 };
 
 export default AuthCallbackPage;
