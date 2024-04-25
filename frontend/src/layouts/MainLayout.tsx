@@ -18,7 +18,9 @@ const MainLayout = ({ children, showHero = false }: MainLayoutProps) => {
             <div className="flex-1 pt-10">
                 {children}
             </div>
+
             <Footer />
+            
         </div>
     )
 };
