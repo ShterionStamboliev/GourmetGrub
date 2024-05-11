@@ -30,7 +30,7 @@ app.get("/health", async (req: Request, res: Response) => {
 app.use("/api/my/user", userRoute);
 app.use("/api/my/restaurant", restaurantRoute);
 app.use("/api/restaurant", restaurantSearchRoute);
-app.use("api/order", orderRoute);
+app.use("/api/order", orderRoute);
 
 app.listen(4000, () => {
     console.log('Server running.')
