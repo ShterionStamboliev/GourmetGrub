@@ -1,9 +1,10 @@
 import { useGetRestaurantId } from "@/api/RestaurantSearchApi";
+import CheckoutButton from "@/components/CheckoutButton";
 import RestaurantInfoPage from "@/components/RestaurantInfoPage";
 import RestaurantMenuItem from "@/components/RestaurantMenuItem";
 import UserOrder from "@/components/UserOrder";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Card } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import { MenuItem } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -41,6 +42,9 @@ const DetailsPage = () => {
                     }
                 ];
             };
+
+            sessionStorage.setItem(`cartItems-${restaurantId}`, JSON.stringify(updateCartItems));
+
             return updateCartItems;
         });
     };
@@ -48,6 +52,8 @@ const DetailsPage = () => {
     const removeFromCart = (cartItem: CartItem) => {
         setCartItems((prevItem) => {
             const updatedCartItems = prevItem.filter((item) => cartItem._id !== item._id);
+
+            sessionStorage.setItem(`cartItems-${restaurantId}`, JSON.stringify(updatedCartItems));
 
             return updatedCartItems;
         });
@@ -85,6 +91,9 @@ const DetailsPage = () => {
                         cartItems={cartItems} 
                         removeFromCart={removeFromCart}
                         />
+                        <CardFooter>
+                            <CheckoutButton />
+                        </CardFooter>
                     </Card>
                 </div>
             </div>
