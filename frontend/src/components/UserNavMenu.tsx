@@ -31,7 +31,7 @@ const UserNavMenu = () => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link to="/my-orders" className="font-bold flex flex-1">
+                    <Link to="/order-status" className="font-bold flex flex-1">
                         <Button className="bg-orange-500 hover:bg-orange-600 flex-1 font-bold">
                             My Orders
                         </Button>

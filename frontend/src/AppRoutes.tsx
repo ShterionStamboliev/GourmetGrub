@@ -7,6 +7,7 @@ import GuardRoute from "./auth/GuardRoute"
 import { RestaurantPage } from "./pages/RestaurantPage"
 import SearchPage from "./pages/SearchPage"
 import DetailsPage from "./pages/RestaurantDetailsPage"
+import OrderStatusPage from "./pages/OrderStatusPage"
 
 function AppRoutes() {
     return (
@@ -36,8 +37,23 @@ function AppRoutes() {
                         <MainLayout>
                             <UserProfilePage />
                         </MainLayout>
-                    } />
-                <Route path="/my-restaurant" element={<MainLayout> <RestaurantPage /> </MainLayout>} />
+                    }
+                />
+                <Route
+                    path="/order-status"
+                    element={
+                        <MainLayout>
+                            <OrderStatusPage />
+                        </MainLayout>
+                    }
+                />
+                <Route
+                    path="/my-restaurant"
+                    element={
+                        <MainLayout>
+                            <RestaurantPage />
+                        </MainLayout>}
+                />
             </Route>
 
             <Route
