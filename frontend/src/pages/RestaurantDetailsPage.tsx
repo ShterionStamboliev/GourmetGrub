@@ -20,7 +20,11 @@ const DetailsPage = () => {
     const { restaurantId } = useParams();
     const { restaurant, isLoading } = useGetRestaurantId(restaurantId);
 
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+        const storedCartItems = sessionStorage.getItem(`cartItems-${restaurantId}`);
+
+        return storedCartItems ? JSON.parse(storedCartItems) : [];
+    });
 
     const addToCart = (menuItem: MenuItem) => {
         setCartItems((prevItems) => {
