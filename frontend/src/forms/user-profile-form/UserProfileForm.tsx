@@ -8,16 +8,15 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-export type UserFormData = z.infer<typeof formSchema>;
-
 const formSchema = z.object({
     email: z.string().optional(),
     name: z.string().min(1, "Name is required"),
-    address: z.string().min(1, "Address is required"),
+    addressLine1: z.string().min(1, "Address is required"),
     country: z.string().min(1, "Country is required"),
     city: z.string().min(1, "City is required"),
 });
 
+export type UserFormData = z.infer<typeof formSchema>;
 
 type UserFormProps = {
     onSave: (userProfileData: UserFormData) => void;
@@ -66,7 +65,7 @@ const UserProfileForm = ({ onSave, isLoading, currentUser, title = 'User Profile
                 )}
                 />
                 <div className='flex flex-col md:flex-row gap-4'>
-                    <FormField control={form.control} name='address' render={({ field }) => (
+                    <FormField control={form.control} name='addressLine1' render={({ field }) => (
                         <FormItem className='flex-1'>
                             <FormLabel>Address</FormLabel>
                             <FormControl>

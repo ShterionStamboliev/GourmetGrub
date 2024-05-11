@@ -43,8 +43,9 @@ type CheckoutSessionRequest = {
     deliveryDetails: {
         email: string;
         name: string;
-        address: string;
-        city: string
+        addressLine1: string;
+        city: string;
+        country: string
     };
     restaurantId: string
 };

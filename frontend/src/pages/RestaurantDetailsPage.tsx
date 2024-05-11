@@ -33,14 +33,14 @@ const DetailsPage = () => {
         setCartItems((prevItems) => {
             const existingItem = prevItems.find((cartItem) => cartItem._id === menuItem._id);
 
-            let updateCartItems;
+            let updatedCartItems;
 
             if (existingItem) {
-                updateCartItems = prevItems.map((cartItem) => cartItem._id === menuItem._id
+                updatedCartItems = prevItems.map((cartItem) => cartItem._id === menuItem._id
                     ? { ...cartItem, quantity: cartItem.quantity + 1 }
                     : cartItem)
             } else {
-                updateCartItems = [
+                updatedCartItems = [
                     ...prevItems, {
                         _id: menuItem._id,
                         name: menuItem.name,
@@ -50,9 +50,9 @@ const DetailsPage = () => {
                 ];
             };
 
-            sessionStorage.setItem(`cartItems-${restaurantId}`, JSON.stringify(updateCartItems));
+            sessionStorage.setItem(`cartItems-${restaurantId}`, JSON.stringify(updatedCartItems));
 
-            return updateCartItems;
+            return updatedCartItems;
         });
     };
 
@@ -77,10 +77,10 @@ const DetailsPage = () => {
                 name: cartItem.name,
                 quantity: cartItem.quantity.toString(),
             })),
-            restaurantId: restaurant?._id,
+            restaurantId: restaurant._id,
             deliveryDetails: {
                 name: userFormData.name,
-                address: userFormData.address,
+                addressLine1: userFormData.addressLine1,
                 city: userFormData.city,
                 country: userFormData.country,
                 email: userFormData.email as string

@@ -2,7 +2,7 @@ export type User = {
     _id: string,
     email: string,
     name: string,
-    address: string,
+    addressLine1: string,
     country: string,
     city: string
 }
