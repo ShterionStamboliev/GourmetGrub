@@ -17,3 +17,6 @@ The app is build with [![My Skills](https://skillicons.dev/icons?i=mongo,express
 * Search for nearby restaurant or cuisines
 * Add items to cart and update quantities
 * Create your own restaurant and take orders
+
+# Search feat
+* For instance, you can try searching with keyword 'manchester' (mind it may take up to 30-60seconds in order for the db to kick in)
